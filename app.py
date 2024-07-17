@@ -2,14 +2,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import controller
-from db import create_tables
+from db import get_db
 
 app = Flask(__name__)
 CORS(app)
-
-@app.before_first_request
-def initialize():
-    create_tables()
 
 # Company endpoints
 @app.route('/api/v1/companies', methods=["GET"])
@@ -67,5 +63,4 @@ def insert_sensor_data():
     return jsonify({'success': success})
 
 if __name__ == '__main__':
-    create_tables()
-    app.run(host='0.0.0.0', port=80, debug=False)  # Cambia el puerto a 80
+    app.run(host='0.0.0.0', port=80, debug=False)

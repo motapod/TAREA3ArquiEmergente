@@ -51,3 +51,6 @@ def create_tables():
     for table in tables:
         cursor.execute(table)
     db.commit()
+
+if __name__ == '__main__':
+    create_tables()
