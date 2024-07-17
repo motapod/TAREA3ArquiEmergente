@@ -142,3 +142,10 @@ def get_sensor_data(sensor_id, from_timestamp, to_timestamp):
     statement = "SELECT * FROM sensor_data WHERE sensor_id = ? AND timestamp BETWEEN ? AND ?"
     cursor.execute(statement, [sensor_id, from_timestamp, to_timestamp])
     return cursor.fetchall()
+
+def get_sensor_by_api_key(api_key):
+    db = get_db()
+    cursor = db.cursor()
+    statement = "SELECT * FROM sensor WHERE sensor_api_key = ?"
+    cursor.execute(statement, [api_key])
+    return cursor.fetchone()
