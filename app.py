@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import controller
 from db import get_db
+from db import create_tables
 
 app = Flask(__name__)
 CORS(app)
@@ -63,4 +64,5 @@ def insert_sensor_data():
     return jsonify({'success': success})
 
 if __name__ == '__main__':
+    create_tables()
     app.run(host='0.0.0.0', port=80, debug=False)
